@@ -202,9 +202,15 @@ docker push gahoo82/flask-hello-world
 ## Install Jenkins
  
 Next we will launch EC2 instance on AWS with Ubuntu 22.04 will install Jenkins on that instance. 
- [https://phoenixnap.com/kb/install-jenkins-ubuntu](https://phoenixnap.com/kb/install-jenkins-ubuntu).
+[https://phoenixnap.com/kb/install-jenkins-ubuntu](https://phoenixnap.com/kb/install-jenkins-ubuntu).
 
- ![create-EC2-Ubuntu]()
+ ![create-EC2-Ubuntu](images/9-create-EC2-Ubuntu.png)
+
+Create Key pair and Security Group
+
+![key-pair]()
+
+
  
 Run the following commands on the server.
  
