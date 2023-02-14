@@ -57,7 +57,7 @@ git clone https://github.com/Gahoo82/flask-devops-project-L1.git
 Install the flask module.
  
 ```powershell
-pip install flask
+> pip install flask
 ```
 Open cloned "flask-devops-project-L1" repository in Visual Studio Code.
 Create a new file named "app.py" and add the below code.
@@ -80,5 +80,5 @@ if __name__ == "__main__":
 This code when run will start a web server on port number 5000. 
  
 ```powershell
-python app.py
+> python app.py
 ```
