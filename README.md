@@ -130,7 +130,7 @@ Install the flake8 module.
 Run flake8 command.
  
 ```powershell
-flake8 --exclude venv # Ignore files in venv for quality check
+> flake8 --exclude venv # Ignore files in venv for quality check
 ```
  
 If you do not see any output, it means that everything is alright with code quality.
