@@ -245,7 +245,7 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
  
 Open browser and visit [http://18.184.53.45:8080/](http://18.184.53.45:8080/)] - public address of the EC2 instance.
  
-![jenkins-homepage](images/jenkins_homepage_border.png)
+![jenkins-homepage](images/14-jenkins-homepage.png)
  
 Copy the admin password from the path provided on the jenkins homepage and enter it. Click on "Install suggested plugins". It will take some time to install the plugins.
  
