@@ -335,7 +335,7 @@ Go to the "flask-hello-world" pipeline page and click on "Настройки".
  
 Change definition from "Pipeline script" to "Pipeline script from SCM" and fill details on SCM and github url. Save the pipeline.
  
-![pipeline-from-scm]()
+![pipeline-from-scm](images/22-pipeline-from-scm.png)
  
 Now, create a new file named "Jenkinsfile" in our local code repository and add the below pipeline code.
  
