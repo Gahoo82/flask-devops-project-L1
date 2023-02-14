@@ -253,7 +253,7 @@ Copy the admin password from the path provided on the jenkins homepage and enter
  
 Create a new user.
  
-![create-jenkins-user](images/create_jenkins_user_border.png)
+![create-jenkins-user](images/16-create-jenkins-user.png)
  
 You should now see the jenkins url. Click next and you should see the "Welcome to jenkins" page now.
  
@@ -261,7 +261,7 @@ You should now see the jenkins url. Click next and you should see the "Welcome t
  
 We will now create a Jenkins pipeline which will help in building, testing and deploying the application.
  
-Click on "New Item" on the top left corner of the homepage.
+Click on "Создать Item" on the top left corner of the homepage.
  
 ![new-item-jenkins](images/new_item_jenkins_border.png)
  
