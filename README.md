@@ -34,7 +34,7 @@ In this project, we are going to build a simple [CI/CD](https://www.atlassian.co
 * Jenkinsfile - Contains the pipeline script which will help in building, testing and deploying the application
 * deployment.yaml - [Kubernetes deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) file for the application
 * service.yaml - [Kubernetes service](https://kubernetes.io/docs/concepts/services-networking/service/) file for the application
- 
+
 
 
 ### Clone my Github repository to local host.
@@ -197,5 +197,122 @@ docker push gahoo82/flask-hello-world
 ![docker-test-flake8-tag-push](images/8-docker-test-flake8-tag-push.png)
  
 ## Push the code to github
+
+
+## Install Jenkins
+ 
+Next we will launch EC2 instance on AWS with Ubuntu 22.04 will install Jenkins on that instance. 
+ [https://phoenixnap.com/kb/install-jenkins-ubuntu](https://phoenixnap.com/kb/install-jenkins-ubuntu).
+
+ ![create-EC2-Ubuntu]()
+ 
+Run the following commands on the server.
+ 
+```powershell
+# Install jenkins
+ 
+> curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+/usr/share/keyrings/jenkins-keyring.asc > /dev/null
+ 
+> echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+/etc/apt/sources.list.d/jenkins.list > /dev/null
+ 
+> sudo apt-get update
+> sudo apt install openjdk-11-jre
+> sudo apt-get install jenkins
+ 
+# Install docker and add jenkins user to docker group
+# Installing docker is important as we will be using jenkins to run docker commands to build and run the application.
+> sudo apt install docker.io
+> sudo usermod -aG docker jenkins
+> sudo service jenkins restart
+```
+ 
+Open your browser and visit [http://18.184.53.45:8080/](http://18.184.53.45:8080/)] - public address of the EC2 instance.
+ 
+![jenkins-homepage](images/jenkins_homepage_border.png)
+ 
+Copy the admin password from the path provided on the jenkins homepage and enter it. Click on "Install suggested plugins". It will take some time to install the plugins.
+ 
+![install-plugins](images/install_plugins_border.png)
+ 
+Create a new user.
+ 
+![create-jenkins-user](images/create_jenkins_user_border.png)
+ 
+You should now see the jenkins url. Click next and you should see the "Welcome to jenkins" page now.
+ 
+## Create a Jenkins pipeline
+ 
+We will now create a Jenkins pipeline which will help in building, testing and deploying the application.
+ 
+Click on "New Item" on the top left corner of the homepage.
+ 
+![new-item-jenkins](images/new_item_jenkins_border.png)
+ 
+Enter a name, select "Pipeline" and click next.
+ 
+![select-jenkins-item](images/select_jenkins_item_border.png)
+ 
+We now need to write a [pipeline script](https://www.jenkins.io/doc/book/pipeline/syntax/) in Groovy for building, testing and deploying code.
+ 
+![jenkins-script](images/jenkins_script_border.png)
+ 
+Enter the below code in the pipeline section and click on "Save".
+ 
+```
+pipeline {
+   agent any
+  
+   environment {
+       DOCKER_HUB_REPO = "gahoo82/flask-hello-world"
+       CONTAINER_NAME = "flask-hello-world"
+ 
+   }
+  
+   stages {
+       stage('Checkout') {
+           steps {
+               checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Gahoo82/flask-devops-project-L1.git']]])
+           }
+       }
+       stage('Build') {
+           steps {
+               echo 'Building..'
+               sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
+           }
+       }
+       stage('Test') {
+           steps {
+               echo 'Testing..'
+               sh 'docker stop $CONTAINER_NAME || true'
+               sh 'docker rm $CONTAINER_NAME || true'
+               sh 'docker run --name $CONTAINER_NAME $DOCKER_HUB_REPO /bin/bash -c "pytest test.py && flake8"'
+           }
+       }
+       stage('Deploy') {
+           steps {
+               echo 'Deploying....'
+               sh 'docker stop $CONTAINER_NAME || true'
+               sh 'docker rm $CONTAINER_NAME || true'
+               sh 'docker run -d -p 5000:5000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
+           }
+       }
+   }
+}
+```
+ 
+Click on the "Build Now" button at the left of the page.
+ 
+![build-now-jenkins]()
+ 
+The pipelines should start running now and you should be able to see the status of the build on the page.
+ 
+![jenkins-build-status]()
+ 
+If the build is successful, you can visit [http://127.0.0.1:5000](http://127.0.0.1:5000) and you should see "Hello world" on the browser. If you have installed Jenkins on a Aws/Azure/GCP virtual machine, use the public address of the VM in place of localhost. If you are not able to access the cloud, make sure that port 5000 is added to the inbound port.
+ 
+## Pipeline script from SCM
  
 
