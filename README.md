@@ -35,3 +35,50 @@ In this project, we are going to build a simple [CI/CD](https://www.atlassian.co
 * deployment.yaml - [Kubernetes deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) file for the application
 * service.yaml - [Kubernetes service](https://kubernetes.io/docs/concepts/services-networking/service/) file for the application
  
+
+
+### Clone my Github repository to local host.
+
+ ```powershell
+git clone https://github.com/Gahoo82/flask-devops-project-L1.git
+ ```
+
+ ### Set up virtual Python environment
+
+ Setting up a [virtual Python environment](https://docs.python.org/3/library/venv.html) will help in testing the code locally and also collecting all the dependencies.
+ 
+```powershell
+> py -m venv venv # Create the virtual env named venv
+> venv/Scripts/activate # Activate the virtual env
+```
+ 
+## Create a Flask application
+ 
+Install the flask module.
+ 
+```powershell
+pip install flask
+```
+Open cloned "flask-devops-project-L1" repository in Visual Studio Code.
+Create a new file named "app.py" and add the below code.
+ 
+```python
+from flask import Flask
+import os
+ 
+app = Flask(__name__)
+ 
+ @app.route("/")
+def hello():
+   return "Hello world!!!"
+  
+if __name__ == "__main__":
+   port = int(os.environ.get("PORT", 5000))
+   app.run(debug=True, host='0.0.0.0', port=port)
+```
+ 
+This code when run will start a web server on port number 5000. 
+ 
+```powershell
+python app.py
+```
