@@ -94,7 +94,7 @@ Install [pytest](https://docs.pytest.org/en/7.1.x/) module. We will use pytest f
 > pip install pytest
 ```
 
-![]
+![install-pytest](images/3-pip-install-pytest.png)
 
 Create a new file named "test.py" and add a basic test case.
  
@@ -112,4 +112,6 @@ Run the test file using pytest.
 ```powershell
 > pytest test.py
 ```
+
+![pytest test.py](images/4-pytest-test-py.png)
 
