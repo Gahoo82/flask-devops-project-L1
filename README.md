@@ -169,7 +169,8 @@ Run the application using docker image.
 ```powershell
 > docker run -it -p 5000:5000 flask-hello-world
 ```
- ![docker-build-run]()
+
+ ![docker-build-run](images/7-docker-build-run.png)
 
 Run test case
  
@@ -192,6 +193,8 @@ Push the image to dockerhub. We will need an account on docker hub for this.
 > docker tag flask-hello-world gahoo82/flask-hello-world
 docker push gahoo82/flask-hello-world
 ```
+
+![docker-test-flake8-tag-push](images/8-docker-test-flake8-tag-push.png)
  
 ## Push the code to github
  
