@@ -126,6 +126,7 @@ Install the flake8 module.
 ```powershell
 > pip install flake8
 ```
+![install-flake](images/5-install-flake8.png)
  
 Run flake8 command.
  
@@ -135,7 +136,9 @@ Run flake8 command.
  
 If you do not see any output, it means that everything is alright with code quality.
  
-Try removing the spaces between commas in the app.py and then run flake8 command again. You should see the following errors.
+Try add extra spaces in the app.py and then run flake8 command again. You should see the errors.
 
-Add space again and you will not see the error now.
+Remove extra spaces and we will not see the error now.
+
+![bug-fixes-flake8](images/6-flake8-bugs-fixes.png)
 
