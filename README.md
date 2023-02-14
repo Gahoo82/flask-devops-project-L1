@@ -324,6 +324,8 @@ The pipelines should start running now and you should be able to see the status 
 ![jenkins-building](images/20-jenkins-build-pipeline.png)
  
 If the build is successful, we can visit [http://18.184.53.45:5000](http://18.54.53.45:5000) and we should see "Hello world" on the browser. 
+
+![hello-world-ec2](images/21-hello-world-onEC2.png)
  
 ## Pipeline script from SCM
  
