@@ -42,6 +42,11 @@ In this project, we are going to build a simple [CI/CD](https://www.atlassian.co
  ```powershell
 git clone https://github.com/Gahoo82/flask-devops-project-L1.git
  ```
+ ![git-clone-rep](images/1-git-clone-rep.png)
+ 
+ <p align="center">
+  <img src="https://github.com/Gahoo82/flask-devops-project-L1/blob/main/images/1-git-clone-rep.png">
+ </p>
 
  ### Set up virtual Python environment
 
