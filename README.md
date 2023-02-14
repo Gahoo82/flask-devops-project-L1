@@ -208,7 +208,14 @@ Next we will launch EC2 instance on AWS with Ubuntu 22.04 will install Jenkins o
 
 Create Key pair and Security Group
 
-![key-pair]()
+![key-pair](images/10-key-pair.png)
+
+
+![security-group](images/11-security-group.png)
+
+Download private key to local host and connect to EC2 instance with Powershell via SSH.
+
+
 
 
  
