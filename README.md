@@ -44,10 +44,6 @@ git clone https://github.com/Gahoo82/flask-devops-project-L1.git
  ```
  ![git-clone-rep](images/1-git-clone-rep.png)
  
- <p align="center">
-  <img src="https://github.com/Gahoo82/flask-devops-project-L1/blob/main/images/1-git-clone-rep.png">
- </p>
-
  ### Set up virtual Python environment
 
  Setting up a [virtual Python environment](https://docs.python.org/3/library/venv.html) will help in testing the code locally and also collecting all the dependencies.
