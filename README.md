@@ -329,4 +329,60 @@ If the build is successful, we can visit [http://18.184.53.45:5000](http://18.54
  
 ## Pipeline script from SCM
  
+We can also store the Jenkins pipeline code in our github repository and ask Jenkins to execute this file.
+ 
+Go to the "flask-hello-world" pipeline page and click on "Настройки".
+ 
+Change definition from "Pipeline script" to "Pipeline script from SCM" and fill details on SCM and github url. Save the pipeline.
+ 
+![pipeline-from-scm]()
+ 
+Now, create a new file named "Jenkinsfile" in our local code repository and add the below pipeline code.
+ 
+```
+pipeline {
+   agent any
+  
+   environment {
+       DOCKER_HUB_REPO = "gahoo82/flask-hello-world"
+       CONTAINER_NAME = "flask-hello-world"
+ 
+   }
+  
+   stages {
+       /* We do not need a stage for checkout here since it is done by default when using the "Pipeline script from SCM" option. */
+      
+ 
+       stage('Build') {
+           steps {
+               echo 'Building..'
+               sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
+           }
+       }
+       stage('Test') {
+           steps {
+               echo 'Testing..'
+               sh 'docker stop $CONTAINER_NAME || true'
+               sh 'docker rm $CONTAINER_NAME || true'
+               sh 'docker run --name $CONTAINER_NAME $DOCKER_HUB_REPO /bin/bash -c "pytest test.py && flake8"'
+           }
+       }
+       stage('Deploy') {
+           steps {
+               echo 'Deploying....'
+               sh 'docker stop $CONTAINER_NAME || true'
+               sh 'docker rm $CONTAINER_NAME || true'
+               sh 'docker run -d -p 5000:5000 --name $CONTAINER_NAME $DOCKER_HUB_REPO'
+           }
+       }
+   }
+}
+```
+ 
+Push the code to github.
+ 
+ 
+Go to "flask-hello-world" pipeline page and click on "Build Now"
+ 
+![jenkins-build-scm]()
 
