@@ -142,3 +142,57 @@ Remove extra spaces and we will not see the errors now.
 
 ![bug-fixes-flake8](images/6-flake8-bugs-fixes.png)
 
+
+## Dockerise the application
+ 
+Install docker on local system. Following [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
+ 
+Create a file named "Dockerfile" and add the below code.
+ 
+```dockerfile
+FROM python:3.10
+LABEL maintainer="chernenko.kostua@gmail.com"
+COPY app.py test.py /app/
+WORKDIR /app
+RUN pip install flask pytest flake8 # This downloads all the dependencies
+CMD ["python", "app.py"]
+```
+ 
+Build the docker image.
+ 
+```powershell
+> docker build -t flask-hello-world .
+```
+ 
+Run the application using docker image.
+ 
+```powershell
+> docker run -it -p 5000:5000 flask-hello-world
+```
+ ![docker-build-run]()
+
+Run test case
+ 
+```powershell
+> docker run -it flask-hello-world pytest test.py
+```
+ 
+Run flake8 tests
+ 
+```powershell
+> docker run -it flask-hello-world flake8
+```
+ 
+We can verify if the application is running by opening the page in the browser.
+ 
+Push the image to dockerhub. We will need an account on docker hub for this.
+ 
+```powershell
+> docker login # Login to docker hub
+> docker tag flask-hello-world gahoo82/flask-hello-world
+docker push gahoo82/flask-hello-world
+```
+ 
+## Push the code to github
+ 
+
