@@ -115,3 +115,27 @@ Run the test file using pytest.
 
 ![pytest test.py](images/4-pytest-test-py.png)
 
+## Run code quality tests using flake
+ 
+It's always recommended to write quality code with proper coding standards, proper code formatting and code with no syntax errors.
+ 
+[Flake8](https://flake8.pycqa.org/en/latest/) can be used to check the quality of the code in Python.
+ 
+Install the flake8 module.
+ 
+```powershell
+> pip install flake8
+```
+ 
+Run flake8 command.
+ 
+```powershell
+flake8 --exclude venv # Ignore files in venv for quality check
+```
+ 
+If you do not see any output, it means that everything is alright with code quality.
+ 
+Try removing the spaces between commas in the app.py and then run flake8 command again. You should see the following errors.
+
+Add space again and you will not see the error now.
+
