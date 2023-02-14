@@ -215,8 +215,9 @@ Create Key pair and Security Group
 
 Download private key to local host and connect to EC2 instance with Powershell via SSH.
 
+![ssh-aws](images/12-ssh.png)
 
-
+![ssh-powershell](images/13-ssh-powershell.png)
 
  
 Run the following commands on the server.
@@ -242,7 +243,7 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
 > sudo service jenkins restart
 ```
  
-Open your browser and visit [http://18.184.53.45:8080/](http://18.184.53.45:8080/)] - public address of the EC2 instance.
+Open browser and visit [http://18.184.53.45:8080/](http://18.184.53.45:8080/)] - public address of the EC2 instance.
  
 ![jenkins-homepage](images/jenkins_homepage_border.png)
  
