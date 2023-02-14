@@ -317,15 +317,13 @@ pipeline {
 }
 ```
  
-Click on the "Build Now" button at the left of the page.
- 
-![build-now-jenkins]()
+Click on the "Собрать сейчас" button at the left of the page.
  
 The pipelines should start running now and you should be able to see the status of the build on the page.
  
-![jenkins-build-status]()
+![jenkins-building](images/20-jenkins-build-pipeline.png)
  
-If the build is successful, you can visit [http://127.0.0.1:5000](http://127.0.0.1:5000) and you should see "Hello world" on the browser. If you have installed Jenkins on a Aws/Azure/GCP virtual machine, use the public address of the VM in place of localhost. If you are not able to access the cloud, make sure that port 5000 is added to the inbound port.
+If the build is successful, we can visit [http://18.184.53.45:5000](http://18.54.53.45:5000) and we should see "Hello world" on the browser. 
  
 ## Pipeline script from SCM
  
