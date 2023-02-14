@@ -271,7 +271,7 @@ Enter a name, select "Pipeline" and click next.
  
 Now we need to write a [pipeline script](https://www.jenkins.io/doc/book/pipeline/syntax/) in Groovy for building, testing and deploying code.
  
-![jenkins-script](images/jenkins_script_border.png)
+![jenkins-script](images/19-pipeline-script.png)
  
 Enter the below code in the pipeline section and click on "Save".
  
