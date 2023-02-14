@@ -384,5 +384,5 @@ Push the code to github.
  
 Go to "flask-hello-world" pipeline page and click on "Build Now"
  
-![jenkins-build-scm]()
+![jenkins-build-scm](images/23-pipeline-with-git.png)
 
