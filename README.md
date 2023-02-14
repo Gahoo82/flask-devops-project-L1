@@ -249,7 +249,7 @@ Open browser and visit [http://18.184.53.45:8080/](http://18.184.53.45:8080/)] -
  
 Copy the admin password from the path provided on the jenkins homepage and enter it. Click on "Install suggested plugins". It will take some time to install the plugins.
  
-![install-plugins](images/install_plugins_border.png)
+![install-plugins](images/15-jenkins-plugins.png)
  
 Create a new user.
  
