@@ -87,3 +87,5 @@ This code when run will start a web server on port number 5000.
 ```powershell
 > python app.py
 ```
+
+![py-venv-flask](images/2-py-venv-flask-install.png)
