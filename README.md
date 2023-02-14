@@ -263,7 +263,7 @@ We will now create a Jenkins pipeline which will help in building, testing and d
  
 Click on "Создать Item" on the top left corner of the homepage.
  
-![new-item-jenkins](images/new_item_jenkins_border.png)
+![new-item-jenkins](images/17-jenkins-new-item.png)
  
 Enter a name, select "Pipeline" and click next.
  
