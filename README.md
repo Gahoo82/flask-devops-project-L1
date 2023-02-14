@@ -138,7 +138,7 @@ If you do not see any output, it means that everything is alright with code qual
  
 Try add extra spaces in the app.py and then run flake8 command again. You should see the errors.
 
-Remove extra spaces and we will not see the error now.
+Remove extra spaces and we will not see the errors now.
 
 ![bug-fixes-flake8](images/6-flake8-bugs-fixes.png)
 
