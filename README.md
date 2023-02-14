@@ -85,3 +85,21 @@ This code when run will start a web server on port number 5000.
 ```
 
 ![py-venv-flask](images/2-py-venv-flask-install.png)
+
+Create a new file named "test.py" and add a basic test case.
+ 
+```python
+from app import app
+ 
+def test_hello():
+   response = app.test_client().get('/')
+   assert response.status_code == 200
+   assert response.data == b'Hello world!!!'
+```
+ 
+Run the test file using pytest.
+ 
+```powershell
+> pytest test.py
+```
+
