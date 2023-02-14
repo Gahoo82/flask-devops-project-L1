@@ -267,9 +267,9 @@ Click on "Создать Item" on the top left corner of the homepage.
  
 Enter a name, select "Pipeline" and click next.
  
-![select-jenkins-item](images/select_jenkins_item_border.png)
+![select-jenkins-item](images/18-jenkins-pipeline-create.png)
  
-We now need to write a [pipeline script](https://www.jenkins.io/doc/book/pipeline/syntax/) in Groovy for building, testing and deploying code.
+Now we need to write a [pipeline script](https://www.jenkins.io/doc/book/pipeline/syntax/) in Groovy for building, testing and deploying code.
  
 ![jenkins-script](images/jenkins_script_border.png)
  
