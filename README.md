@@ -386,3 +386,9 @@ Go to "flask-hello-world" pipeline page and click on "Build Now"
  
 ![jenkins-build-scm](images/23-pipeline-with-git.png)
 
+
+==============================================
+Creating a Kubernetes deployment and service for the application and 
+using Jenkins to deploy the application on Kubernetes now in progressing. 
+
+I'll finishing these points today-tomorrow.
