@@ -8,11 +8,9 @@ pipeline {
    }
   
    stages {
-       stage('Checkout') {
-           steps {
-               checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Gahoo82/flask-devops-project-L1.git']]])
-           }
-       }
+       /* We do not need a stage for checkout here since it is done by default when using the "Pipeline script from SCM" option. */
+
+       
        stage('Build') {
            steps {
                echo 'Building..'
