@@ -39,7 +39,7 @@ pipeline {
  
                sh 'ssh ubuntu@18.184.5.180 kubectl apply -f ~/deployment.yaml'
                sh 'ssh ubuntu@18.184.5.180 kubectl apply -f ~/service.yaml'
-   }
-}
+           }
+       }
    }
 }
