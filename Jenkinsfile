@@ -35,7 +35,7 @@ pipeline {
         stage('Deploy') {
            steps {
                echo 'Deploying....'
-               sh 'scp -r -o StrictHostKeyChecking=no deployment.yaml service.yaml ubuntu@ec2-3-72-250-234.eu-central-1.compute.amazonaws.com:~/'
+               sh 'scp -v -r -o StrictHostKeyChecking=no deployment.yaml service.yaml ubuntu@ec2-3-72-250-234.eu-central-1.compute.amazonaws.com:~/'
                sh 'ssh ubuntu@ec2-3-72-250-234.eu-central-1.compute.amazonaws.com kubectl apply -f ~/deployment.yaml'
                sh 'ssh ubuntu@ec2-3-72-250-234.eu-central-1.compute.amazonaws.com kubectl apply -f ~/service.yaml'
            }
