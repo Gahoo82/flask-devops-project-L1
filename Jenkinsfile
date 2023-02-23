@@ -35,9 +35,9 @@ pipeline {
         stage('Deploy') {
            steps {
                echo 'Deploying....'
-               sh 'scp deployment.yaml service.yaml ubuntu@3.72.250.234:~/'
-               sh 'ssh -i jenkins_rsa ubuntu@3.72.250.234 kubectl apply -f ~/deployment.yaml'
-               sh 'ssh -i jenkins_rsa ubuntu@3.72.250.234 kubectl apply -f ~/service.yaml'
+               sh 'scp -r deployment.yaml service.yaml ubuntu@3.72.250.234:~/'
+               sh 'ssh ubuntu@3.72.250.234 kubectl apply -f ~/deployment.yaml'
+               sh 'ssh ubuntu@3.72.250.234 kubectl apply -f ~/service.yaml'
            }
        }
    }
