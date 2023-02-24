@@ -490,3 +490,99 @@ Finally, push the updated code to github
 First, I'll add docker hub credentials in jenkins. This is needed as I have to first push the docker image before deploying on kubernetes.
 
 ![docker-cred-for-jenkins](images/24-docker-cred-for-jenkins.png)
+
+Now modify Jenkinsfile in the project to push the image and then deploy the application on kubernetes.
+
+```groovy
+pipeline {
+   agent any
+  
+   environment {
+       DOCKER_HUB_REPO = "gahoo82/flask-hello-world"
+       CONTAINER_NAME = "flask-hello-world"
+       DOCKERHUB_CREDENTIALS=credentials('dockerhub-credentials')
+   }
+  
+   stages {
+       /* We do not need a stage for checkout here since it is done by default when using "Pipeline script from SCM" option. */
+      
+       stage('Build') {
+           steps {
+               echo 'Building..'
+               sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
+           }
+       }
+       stage('Test') {
+           steps {
+               echo 'Testing..'
+               sh 'docker stop $CONTAINER_NAME || true'
+               sh 'docker rm $CONTAINER_NAME || true'
+               sh 'docker run --name $CONTAINER_NAME $DOCKER_HUB_REPO /bin/bash -c "pytest test.py && flake8"'
+           }
+       }
+       stage('Push') {
+           steps {
+               echo 'Pushing image..'
+               sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+               sh 'docker push $DOCKER_HUB_REPO:latest'
+           }
+       }
+       stage('Deploy') {
+           steps {
+               echo 'Deploying....'
+               sh 'minikube kubectl -- apply -f deployment.yaml'
+               sh 'minikube kubectl -- apply -f service.yaml'
+           }
+       }
+   }
+}
+```
+ 
+Commit the changes to github.
+  
+Go to "flask-hello-world" pipeline page and click on "Build Now"
+
+Create a ssh key pair on jenkins server.
+ 
+```powershell
+$ cd ~/.ssh # We are on jenkins server
+$ ssh-keygen -t rsa # select the default options
+$ cat id_rsa.pub # Copy the public key
+```
+ 
+Add the public key we created to authorized_keys on kubernetes server.
+ 
+```powershell
+$ cd ~/.ssh # We are on kubernetes server
+$ echo "<public key>" >> authorized_keys
+```
+ 
+Modify the 'Deploy' section of Jenkinsfile. 
+ 
+```groovy
+stage('Deploy') {
+           steps {
+               echo 'Deploying....'
+               sh 'scp -v -r -o StrictHostKeyChecking=no deployment.yaml service.yaml ubuntu@3.65.39.144:/home/ubuntu'
+               sh 'ssh ubuntu@3.65.39.144 kubectl apply -f /home/ubuntu/deployment.yaml'
+               sh 'ssh ubuntu@3.65.39.144 kubectl apply -f /home/ubuntu/service.yaml'
+           }
+       }
+```
+
+Change number of replicas in deployment.yaml
+
+![5-replicas](images/26-change-replicas.png)
+
+Commit the code. Build the pipeline again on Jenkins server.
+
+![final-pipeline-build](images/25-final-pipeline-build.png)
+
+And now we can see 5 pods running.
+
+![vinikube-pods](images/27-minikube-server-output.png)
+
+
+
+
+
