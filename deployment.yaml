@@ -14,7 +14,7 @@ spec:
      containers:
        - name: flask-hello
          image: gahoo82/flask-hello-world:latest
- replicas: 4
+ replicas: 7
  selector: # Mandatory, Select the pods which needs to be in the replicaset
    matchLabels:
      app: flask-hello
