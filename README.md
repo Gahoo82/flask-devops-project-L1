@@ -483,3 +483,10 @@ Run below command to access the application on the browser.
 ```bash
 minikube service flask-hello-service-nodeport
 ```
+Finally, push the updated code to github
+
+## Deploy using jenkins on kubernetes
+
+First, I'll add docker hub credentials in jenkins. This is needed as I have to first push the docker image before deploying on kubernetes.
+
+![docker-cred-for-jenkins](images/24-docker-cred-for-jenkins.png)
