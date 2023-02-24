@@ -11,7 +11,7 @@ In this project, we are going to build a simple [CI/CD](https://www.atlassian.co
 * Git and Github
 * Jenkins
 * Kubernetes
-* Linux machine
+* EC2-instances with Linux
  
 ## Steps in the CI/CD pipeline
 1. Create a "Hello world" Flask application
@@ -19,9 +19,9 @@ In this project, we are going to build a simple [CI/CD](https://www.atlassian.co
 3. Dockerise the application
 4. Test the code locally by building docker image and running it
 5. Create a github repository and push code to it
-6. Start a Jenkins server on a host
+6. Start a Jenkins server on Amazon EC2 instance
 7. Write a Jenkins pipeline to build, test and push the docker image to Dockerhub.
-8. Set up Kubernetes on a host using [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+8. Set up Kubernetes on Amazon EC2 instance using [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 9. Create a Kubernetes deployment and service for the application.
 10. Use Jenkins to deploy the application on Kubernetes
  
