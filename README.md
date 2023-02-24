@@ -36,7 +36,6 @@ In this project, we are going to build a simple [CI/CD](https://www.atlassian.co
 * service.yaml - [Kubernetes service](https://kubernetes.io/docs/concepts/services-networking/service/) file for the application
 
 
-
 ### Clone my Github repository to local host.
 
  ```powershell
